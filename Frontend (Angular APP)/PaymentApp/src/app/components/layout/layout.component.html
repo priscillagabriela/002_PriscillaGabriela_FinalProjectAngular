@@ -1,0 +1,32 @@
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+      Bootstrap
+    </a>
+  </nav>
+
+  <header id="home" class="hero-area-2">    
+    <div class="overlay"></div>
+    <nav class="navbar navbar-expand-md bg-inverse fixed-top scrolling-navbar">
+      <div class="container">
+        <button style="background-color:transparent; border:none" class="navbar-brand" (click)="onButtonClick()"><i class="bi bi-credit-card"></i> Payment</button>  
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="lni-menu"></i>
+        </button>
+      </div>
+    </nav>  
+    <div class="container" *ngIf="isHome" style="margin-top:0">      
+      <div class="row space-100">
+        <div class="col-lg-7 col-md-12 col-xs-12">
+          <div class="contents" style="margin-top:0;padding-top: 35px;padding-bottom:35px;">
+            <h3 class="head-title" style="color:white">PAYMENT SYSTEM
+            </h3>
+            <p class="navbar-brand" style="font-size: 130%;">Here you could create, read, update, and delete card owner's payment data.</p>
+          </div>
+        </div>
+      </div> 
+    </div>             
+  </header>
+  <div class="container" style="margin-top:80px" *ngIf="!isHome">
+      <h1>{{status}}</h1>
+    </div>

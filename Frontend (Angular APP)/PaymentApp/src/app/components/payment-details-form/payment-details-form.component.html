@@ -1,0 +1,57 @@
+<div class="container" style="margin-top:30px">
+    <form novalidate autocomplete="off" [formGroup]="inputData" #form="ngForm" (submit)="onSubmit(form)">
+        <input type="hidden" name="paymentDetailId" [value]="service.formData.paymentDetailId" />
+        <div class="form-group">
+            <label>Card Owner Name</label>
+            <input class="form-control form-control" placeholder="Full Name" name="cardOwnerName"
+                [(ngModel)]="service.formData.cardOwnerName"
+                formControlName="cardOwnerName" (input)="a=a+1" style="margin-bottom: 8px;">
+                <div class="invalid-errors" *ngIf="cardOwnerName?.invalid && a>0">
+                    <span *ngIf="cardOwnerName?.errors?.required">Input is required</span>
+                    <span *ngIf="cardOwnerName?.errors?.pattern">Input must be alphabetical</span>
+                </div>
+        </div>
+        <div class="form-group">
+            <label>Card Number</label>
+            <input class="form-control form-control" placeholder="16 Digit Card Number" name="cardNumber"
+                [(ngModel)]="service.formData.cardNumber"
+                id="cardNumber" formControlName="cardNumber" (input)="b=b+1" style="margin-bottom: 8px;">
+                <div class="invalid-errors" *ngIf="cardNumber?.invalid && b>0">
+                    <span *ngIf="cardNumber?.errors?.required">Input is required</span>
+                    <span *ngIf="cardNumber?.errors?.minlength||cardNumber?.errors?.maxlength||cardNumber?.errors?.pattern">Input must be 16 digit number</span>
+                </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label>Security Code</label>
+                <input type="password" class="form-control form-control" placeholder="Security Code" name="securityCode"
+                    [(ngModel)]="service.formData.securityCode"
+                    id="securityCode" formControlName="securityCode" (input)="c=c+1" style="margin-bottom: 8px;">
+                    <div class="invalid-errors" *ngIf="securityCode?.invalid && c>0">
+                        <span *ngIf="securityCode?.errors?.required">Input is required</span>
+                        <span *ngIf="securityCode?.errors?.minlength||securityCode?.errors?.maxlength||securityCode?.errors?.pattern">Input must be 3 digit number</span>
+                    </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label>Valid Through</label>
+                <input class="form-control form-control" placeholder="MM/YY" name="expirationDate"
+                    [(ngModel)]="service.formData.expirationDate"
+                    id="expirationDate" formControlName="expirationDate" (input)="d=d+1" style="margin-bottom: 8px;">
+                    <div class="invalid-errors" *ngIf="expirationDate?.invalid && d>0">
+                        <span *ngIf="expirationDate?.errors?.required">Input is required</span>
+                        <span *ngIf="expirationDate?.errors?.minlength||expirationDate?.errors?.maxlength||expirationDate?.errors?.pattern">Input must start with month following by year (MM/YY)</span>
+                    </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit" [disabled]="form.invalid">
+                <span></span> 
+                Submit
+            </button>
+            <button class="btn btn-dark" type="button" (click)="onButtonClick(form)" style="margin-left: 15px;">
+                <span></span> 
+                Back
+            </button>
+        </div>
+    </form>
+</div>

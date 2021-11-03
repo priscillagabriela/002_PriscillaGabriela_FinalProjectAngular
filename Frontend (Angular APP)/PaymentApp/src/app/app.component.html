@@ -1,0 +1,9 @@
+<app-layout (clickEventHandler)="changeStatus2($event)" [isHome]="isHome" [status]="status"></app-layout>
+
+<div class="container" *ngIf="isHome">
+  <app-payment-details (clickEventHandler)="changeStatus($event)" (clickEventHandler2)="changeStatus3($event)" [isHome]="isHome"></app-payment-details>
+</div>
+
+<div class="col-md-12" *ngIf="isForm">
+  <app-payment-details-form [isForm]="isForm" (clickEventHandler)="changeStatus4($event)"></app-payment-details-form>
+</div>

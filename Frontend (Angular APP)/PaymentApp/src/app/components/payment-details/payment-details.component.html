@@ -1,0 +1,29 @@
+<div class="row" style="margin-top:30px;font-size:100%">
+    <div class="text-right" style="margin-bottom:15px"><button type="button" class="btn btn-success" (click)="onButtonClick()">Add Payment Data</button></div>
+    <div class="col-md-12">
+        <table class="table" style="padding: 100px" id="tab">
+            <thead class="thead-light">
+                <tr>
+                    <th style="padding-left: 20px">Card Owner</th>
+                    <th>Card Number</th>
+                    <th>Exp. Date</th>
+                    <th width="140px"></th>
+                    <th width="155px" style="padding: 0 60px"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pd of service.list">
+                    <td style="padding-left: 20px">{{pd.cardOwnerName}}</td>
+                    <td>{{pd.cardNumber}}</td>
+                    <td>{{pd.expirationDate}}</td>
+                    <td>
+                        <button type="button" class="btn btn-warning" (click)="populateForm(pd)"><i class="bi bi-pencil-fill"></i> Edit</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger" (click)="onDelete(pd.paymentDetailId)"><i class="bi bi-trash-fill"></i> Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
